@@ -1,0 +1,20 @@
+{
+  "name": "node-udemy-learning",
+  "version": "1.0.0",
+  "description":
+    "Learning Node.js learning https://www.udemy.com/the-complete-nodejs-developer-course-2/",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scotteza/node-learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scotteza/node-learning/issues"
+  },
+  "homepage": "https://github.com/scotteza/node-learning#readme"
+}
