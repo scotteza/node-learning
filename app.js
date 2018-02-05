@@ -9,30 +9,41 @@ const title = argv.title;
 const body = argv.body;
 const command = argv._[0];
 
-if (command === "add") {
-  const addedNote = notes.addNote(title, body);
-  if (addedNote) {
-    console.log("Note added");
-    notes.logNote(addedNote);
-  } else {
-    console.log("Note title already in use");
+switch (command) {
+  case "add": {
+    const addedNote = notes.addNote(title, body);
+    if (addedNote) {
+      console.log("Note added");
+      notes.logNote(addedNote);
+    } else {
+      console.log("Note title already in use");
+    }
+    break;
   }
-} else if (command === "list") {
-  let allNotes = notes.getAll();
-  console.log(`Printing ${allNotes.length} note(s)`);
-  allNotes.forEach(note => notes.logNote(note));
-} else if (command === "read") {
-  const note = notes.read(title);
-  if (note) {
-    notes.logNote(note);
-  } else {
-    console.log("Note not found");
+  case "list": {
+    let allNotes = notes.getAll();
+    console.log(`Printing ${allNotes.length} note(s)`);
+    allNotes.forEach(note => notes.logNote(note));
+    break;
   }
-} else if (command === "remove") {
-  const removed = notes.remove(title);
-  console.log(
-    removed ? `Success: removed ${title}` : `Error: ${title} not found`
-  );
-} else {
-  console.log("Command not recognized");
+  case "read": {
+    const note = notes.read(title);
+    if (note) {
+      notes.logNote(note);
+    } else {
+      console.log("Note not found");
+    }
+    break;
+  }
+  case "remove": {
+    const removed = notes.remove(title);
+    console.log(
+      removed ? `Success: removed ${title}` : `Error: ${title} not found`
+    );
+    break;
+  }
+  default: {
+    console.log("Command not recognized");
+    break;
+  }
 }
