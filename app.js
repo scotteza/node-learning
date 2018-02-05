@@ -13,18 +13,26 @@ if (command === "add") {
   const addedNote = notes.addNote(title, body);
   if (addedNote) {
     console.log("Note added");
-    console.log("--");
-    console.log(`Title: ${title}`);
-    console.log(`Body: ${body}`);
+    notes.logNote(addedNote);
   } else {
     console.log("Note title already in use");
   }
 } else if (command === "list") {
-  notes.getAll();
+  let allNotes = notes.getAll();
+  console.log(`Printing ${allNotes.length} note(s)`);
+  allNotes.forEach(note => notes.logNote(note));
 } else if (command === "read") {
-  notes.read(title);
+  const note = notes.read(title);
+  if (note) {
+    notes.logNote(note);
+  } else {
+    console.log("Note not found");
+  }
 } else if (command === "remove") {
-  notes.remove(title);
+  const removed = notes.remove(title);
+  console.log(
+    removed ? `Success: removed ${title}` : `Error: ${title} not found`
+  );
 } else {
   console.log("Command not recognized");
 }
