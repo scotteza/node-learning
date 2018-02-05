@@ -1,0 +1,10 @@
+{
+  "files.exclude": {
+    "__error": "Not found",
+    "node_modules": true,
+    ".vscode": true,
+    "README.md": true,
+    "package.json": true,
+    "package-lock.json": true
+  }
+}
