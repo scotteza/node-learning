@@ -10,7 +10,15 @@ const body = argv.body;
 const command = argv._[0];
 
 if (command === "add") {
-  notes.addNote(title, body);
+  const addedNote = notes.addNote(title, body);
+  if (addedNote) {
+    console.log("Note added");
+    console.log("--");
+    console.log(`Title: ${title}`);
+    console.log(`Body: ${body}`);
+  } else {
+    console.log("Note title already in use");
+  }
 } else if (command === "list") {
   notes.getAll();
 } else if (command === "read") {
