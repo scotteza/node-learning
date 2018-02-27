@@ -19,14 +19,22 @@ geocode.geocodeAddress(searchTerm, (errorMessage, geocodeResults) => {
   if (errorMessage) {
     console.log(errorMessage);
   } else {
-    console.log(JSON.stringify(geocodeResults, undefined, 2));
-  }
-});
-
-weather.getWeather(37.8267, -122.4233, (errorMessage, weatherResults) => {
-  if (errorMessage) {
-    console.log(errorMessage);
-  } else {
-    console.log(JSON.stringify(weatherResults, undefined, 2));
+    weather.getWeather(
+      geocodeResults.latitude,
+      geocodeResults.longitude,
+      (errorMessage, weatherResults) => {
+        if (errorMessage) {
+          console.log(errorMessage);
+        } else {
+          console.log(
+            `It is currently ${weatherResults.temperature} degress in ${
+              geocodeResults.address
+            }. The apparent temperature is ${
+              weatherResults.apparentTemperature
+            } degrees.`
+          );
+        }
+      }
+    );
   }
 });

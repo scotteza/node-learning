@@ -5,7 +5,7 @@ const fn = "C:\\Development\\weatherkey.txt";
 
 const getWeather = (latitude, longitude, callback) => {
   const key = fs.readFileSync(fn);
-  const url = `https://api.darksky.net/forecast/${key}/${latitude},${longitude}`;
+  const url = `https://api.darksky.net/forecast/${key}/${latitude},${longitude}?units=ca`;
   request(
     {
       url,
