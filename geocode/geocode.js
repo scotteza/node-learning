@@ -3,7 +3,7 @@ const request = require("request");
 
 const fn = "C:\\Development\\googlekey.txt";
 
-const geocodeAddress = (searchTerm, callBack) => {
+const geocodeAddress = (searchTerm, callback) => {
   const key = fs.readFileSync(fn);
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${searchTerm}&key=${key}`;
 
@@ -14,11 +14,11 @@ const geocodeAddress = (searchTerm, callBack) => {
     },
     (error, response, body) => {
       if (error) {
-        callBack("There was an error", null);
+        callback("There was an error calling the geocode API", null);
       } else if (body.status === "ZERO_RESULTS") {
-        callBack("Unable to find address", null);
+        callback("Unable to find address on geocode API", null);
       } else if (body.status === "OK") {
-        callBack(undefined, {
+        callback(undefined, {
           address: body.results[0].formatted_address,
           latitude: body.results[0].geometry.location.lat,
           longitude: body.results[0].geometry.location.lng
