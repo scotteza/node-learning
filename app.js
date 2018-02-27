@@ -14,4 +14,10 @@ const argv = yargs
   .alias("help", "h").argv;
 
 const searchTerm = encodeURIComponent(argv.a);
-geocode.geocodeAddress(searchTerm);
+geocode.geocodeAddress(searchTerm, (errorMessage, results) => {
+  if (errorMessage) {
+    console.log(errorMessage);
+  } else {
+    console.log(JSON.stringify(results, undefined, 2));
+  }
+});
