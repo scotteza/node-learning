@@ -1,1 +1,3 @@
-# node-learning
+# Node Learning
+
+Following a NodeJS course
